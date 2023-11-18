@@ -1,0 +1,4 @@
+fpdf
+re
+streamlit
+pandas
