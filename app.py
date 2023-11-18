@@ -41,7 +41,7 @@ if menu=='Home':
     # Add member to DataFrame
     if st.button("Add Number") and phone_number_valid:
         df.at[df[df['members']==name].index[0],'mobile_no']=int(phone_number)
-        df.to_csv('df.csv')
+        df.to_csv('df.csv',index=False)
         st.success("Number added successfully!")
 
 if menu=='Update Number':
@@ -80,7 +80,7 @@ if menu=='Update Number':
         # Add member to DataFrame
         if st.button("Update Number") and phone_number_valid:
             df.at[df[df['members']==name].index[0],'mobile_no']=int(phone_number)
-            df.to_csv('df.csv')
+            df.to_csv('df.csv',index=False)
             st.success("Number added successfully!")
     except Exception:
         pass
