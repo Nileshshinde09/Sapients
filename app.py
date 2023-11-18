@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 import os
-import pdfconvert
+# import pdfconvert
 menu=st.sidebar.radio(
     'Select Option',
     ('Home','Update Number','Admin')
@@ -103,10 +103,10 @@ if menu=='Admin':
         data=f,
         file_name='group_members_report.csv',)  
             
-            filename=pdfconvert.convert_df_to_pdf(df)
-            with open(filename) as f:
-                st.download_button('Download PDF',
-        data=f,
-        file_name='group_members_report.pdf',)            
+        #     filename=pdfconvert.convert_df_to_pdf(df)
+        #     with open(filename) as f:
+        #         st.download_button('Download PDF',
+        # data=f,
+        # file_name='group_members_report.pdf',)            
         if password!=os.environ["realpass1"] or password!=os.environ["realpass2"]:
             st.warning("Wrong Password")
