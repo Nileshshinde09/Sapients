@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import re
 import os
-# import pdfconvert
+import pdfconvert
 menu=st.sidebar.radio(
     'Select Option',
     ('Home','Update Number','Admin')
@@ -39,10 +39,10 @@ if menu=='Home':
         st.warning("Please enter a valid 10-digit phone number.")
 
     # Add member to DataFrame
-    if st.button("Add Member") and phone_number_valid:
+    if st.button("Add Number") and phone_number_valid:
         df[df['members']==name]['mobile_no']=phone_number
         df.to_csv('df.csv')
-        st.success("Member added successfully!")
+        st.success("Number added successfully!")
 
 if menu=='Update Number':
     # Create empty DataFrame
@@ -78,10 +78,10 @@ if menu=='Update Number':
             st.warning("Please enter a valid 10-digit phone number.")
 
         # Add member to DataFrame
-        if st.button("Update Member") and phone_number_valid:
+        if st.button("Update Number") and phone_number_valid:
             df[df['members']==name]['mobile_no']=phone_number
             df.to_csv('df.csv')
-            st.success("Member added successfully!")
+            st.success("Number added successfully!")
     except Exception:
         pass
 
@@ -103,10 +103,10 @@ if menu=='Admin':
         data=f,
         file_name='group_members_report.csv',)  
             
-        #     filename=pdfconvert.convert_df_to_pdf(df)
-        #     with open(filename) as f:
-        #         st.download_button('Download PDF',
-        # data=f,
-        # file_name='group_members_report.pdf',)            
+            filename=pdfconvert.convert_df_to_pdf(df)
+            with open(filename) as f:
+                st.download_button('Download PDF',
+        data=f,
+        file_name='group_members_report.pdf',)            
         if password!=os.environ["realpass1"] or password!=os.environ["realpass2"]:
             st.warning("Wrong Password")
