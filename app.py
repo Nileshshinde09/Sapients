@@ -88,7 +88,7 @@ if __name__=="__main__":
             df.to_csv('df.csv',index=False)
             st.success("Number added successfully!")
 
-    if menu=='Update Number':
+    if menu=='Update':
         # Create empty DataFrame
         # df = pd.DataFrame(columns=['Name', 'Semester', 'Phone Number'])
         df=pd.read_csv('df.csv')
